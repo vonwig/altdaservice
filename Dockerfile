@@ -9,7 +9,7 @@ COPY src /build/src
 
 RUN lein metajar
 
-FROM eclipse-temurin:11.0.18_10-jre-jammy
+FROM eclipse-temurin:11.0.12_7-jre-focal
 
 RUN mkdir -p /usr/src/app \
     && mkdir -p /usr/src/app/bin \
