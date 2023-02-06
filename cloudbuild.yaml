@@ -1,0 +1,23 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  entrypoint: 'bash'
+  args: ["-c", "docker login --username=$$USERNAME --password=$$PASSWORD"]
+  secretEnv: ["USERNAME", "PASSWORD"]
+- name: 'gcr.io/cloud-builders/docker'
+  args: 
+  - 'build' 
+  - '-t' 
+  - 'vonwig/altdbservice:$TAG_NAME' 
+  - '--build-arg' 
+  - 'COMMIT_SHA=$COMMIT_SHA' 
+  - '-f' 
+  - 'Dockerfile' 
+  - '.'
+- name: 'gcr.io/cloud-builders/docker'
+  args: ["push", "vonwig/altdaservice:$TAG_NAME"]
+availableSecrets:
+   secretManager:
+   - versionName: projects/personalsdm-216019/secrets/docker-password/versions/2
+     env: 'PASSWORD'
+   - versionName: projects/personalsdm-216019/secrets/docker-username/versions/3
+     env: 'USERNAME'
