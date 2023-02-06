@@ -25,7 +25,7 @@
          print-version {:depends [version]
                         :task (println version)}
 
-         increment-version {:task (tasks/increment-version (fs/file "index.js"))}
+         increment-version {:task (tasks/increment-version (fs/file "src/atomist/main.clj"))}
 
          next-version {:task (tasks/next-tag)}
 
