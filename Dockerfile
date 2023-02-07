@@ -11,6 +11,8 @@ RUN lein metajar
 
 FROM eclipse-temurin:11.0.18_10-jre-jammy
 
+RUN apt-get -y --allow-remove-essential purge openssl bash
+
 RUN mkdir -p /usr/src/app \
     && mkdir -p /usr/src/app/bin \
     && mkdir -p /usr/src/app/lib
