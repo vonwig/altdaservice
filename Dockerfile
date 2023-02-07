@@ -9,7 +9,7 @@ COPY src /build/src
 
 RUN lein metajar
 
-FROM eclipse-temurin:11.0.12_7-jre-focal
+FROM eclipse-temurin:11.0.12_7-jre-focal@sha256:b12963d11443c79d23185c80ca0159dd9c9372de2d989ea93d81c8a8a7addc16
 
 RUN apt-get -y --allow-remove-essential purge bash
 RUN apt-get -y remove openssl
